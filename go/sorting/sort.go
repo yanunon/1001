@@ -4,7 +4,6 @@ import (
 	"sort"
 )
 
-
 func quickSort(data sort.Interface, low, high int) {
 	if low >= high {
 		return
@@ -12,22 +11,22 @@ func quickSort(data sort.Interface, low, high int) {
 
 	l := low
 	h := high
-	for;l < h; {
+	for l < h {
 		if data.Less(l+1, l) {
 			data.Swap(l, l+1)
 			l++
-		}else {
+		} else {
 			data.Swap(l+1, h)
 			h--
 		}
 	}
 
-	if low < l - 1 {
-		quickSort(data, low, l - 1)
+	if low < l-1 {
+		quickSort(data, low, l-1)
 	}
 
-	if high > l + 1 {
-		quickSort(data, l + 1, high)
+	if high > l+1 {
+		quickSort(data, l+1, high)
 	}
 }
 
@@ -38,7 +37,7 @@ func QuickSort(data sort.Interface) {
 func BubbleSort(data sort.Interface) {
 	length := data.Len()
 	for i := 0; i < length-1; i++ {
-		for j := i+1; j < length; j++ {
+		for j := i + 1; j < length; j++ {
 			if data.Less(j, i) {
 				data.Swap(j, i)
 			}

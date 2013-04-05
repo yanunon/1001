@@ -1,10 +1,10 @@
 package sorting
 
 import (
-	"sort"
 	"math/rand"
-	"time"
+	"sort"
 	"testing"
+	"time"
 )
 
 func init() {
@@ -14,7 +14,7 @@ func init() {
 func generateRandomInts(max, length int) *sort.IntSlice {
 	data := make([]int, length)
 	for i := 0; i < length; i++ {
-		data[i] = rand.Int()%max
+		data[i] = rand.Int() % max
 	}
 	is := sort.IntSlice(data)
 	return &is
