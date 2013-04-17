@@ -10,14 +10,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int* generate_random_array(int max, int n){
+void generate_random_array(int* array, int max, int n){
 	srand(time(0));
-	int* array = new int[n];
 	int* p = array;
 	for(int i = 0; i < n; i++){
 		*p++ = rand() % max;
 	}
-	return array;
 }
 
 void print_array(int* array, int n, char* s){
@@ -115,7 +113,8 @@ int main(int argc, char** argv){
 		n = atoi(argv[2]);
 	}
 
-	int *array = generate_random_array(max, n);
+	int *array = new int[n];
+	generate_random_array(array, max, n);
 	print_array(array, n, "random");
 
 	int *tmp_array = new int[n];
@@ -139,4 +138,3 @@ int main(int argc, char** argv){
 	delete[] array;
 	return 0;
 }
-
