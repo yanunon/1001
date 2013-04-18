@@ -110,6 +110,7 @@ int main(int argc, char** argv){
 	print_array(array, n, NULL);
 	TreeNode* tree = build_search_tree(array, n);
 	traversal_tree(tree);
+	return 0;
 }
 
 

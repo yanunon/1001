@@ -102,6 +102,34 @@ void select_sort(int* array, int n) {
 	}
 }
 
+void heap_sift_down(int* array, int idx, int len){
+	int son_idx = 2*idx + 1;
+	while(son_idx < len) {
+		if (son_idx + 1 < len && array[son_idx+1] > array[son_idx]){
+			son_idx++;
+		}
+		if (array[idx] < array[son_idx]){
+			swap_array_element(array, idx, son_idx);
+			idx = son_idx;
+			son_idx = 2*idx + 1;
+		}else {
+			break;
+		}
+	}
+}
+
+void heap_sort(int* array, int n) {
+	for(int i = n/2; i > -1; i--) {
+		heap_sift_down(array, i, n);
+	}
+
+	for(int i = 0; i < n - 1; i++) {
+		swap_array_element(array, 0, n - 1 - i);
+
+		heap_sift_down(array, 0, n - 1 - i);
+	}
+}
+
 int main(int argc, char** argv){
 	int max = 100;
 	int n = 20;
@@ -133,6 +161,10 @@ int main(int argc, char** argv){
 	memcpy(tmp_array, array, sizeof(int)*n);
 	select_sort(tmp_array, n);
 	print_array(tmp_array, n, "select");
+
+	memcpy(tmp_array, array, sizeof(int)*n);
+	heap_sort(tmp_array, n);
+	print_array(tmp_array, n, "heap");
 
 	delete[] tmp_array;
 	delete[] array;
